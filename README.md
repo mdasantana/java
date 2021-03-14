@@ -34,6 +34,6 @@
 
 Este projeto esta sobe a licenca [MIT](./LICENSE).
 
-Feito por Matheus Santana [Entre em contato!](https://www.linkedin.com/in/tgmarinho/)
+Feito por Matheus Santana [Entre em contato!](https://www.linkedin.com/in/dev-matheus-santana/)
 
 ---
