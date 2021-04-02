@@ -19,6 +19,7 @@
       * [Média e Aprovação](https://github.com/mdasantana/java/blob/main/Atividades/5%C2%AA%20Quest%C3%A3o.java)
       * [Menor número do Vetor](https://github.com/mdasantana/java/blob/main/Atividades/6%C2%AA%20Quest%C3%A3o.java)
       * [Conta Bancária - Depósito e Saque](https://github.com/mdasantana/java/tree/main/Atividades/ContaBancaria)
+      * [CNH - Criação](https://github.com/mdasantana/java/tree/main/Atividades/Habilitacao)
    * Desafios
       * [Completar CPF](https://github.com/mdasantana/java/blob/main/Desafios/CPF.java)
 <!--te-->
