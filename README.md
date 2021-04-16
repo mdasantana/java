@@ -21,6 +21,8 @@
       * [Conta Bancária - Depósito e Saque](https://github.com/mdasantana/java/tree/main/Atividades/ContaBancaria)
       * [CNH - Criação](https://github.com/mdasantana/java/tree/main/Atividades/Habilitacao)
       * [Geometria - Área, Perímetro e Circunferência](https://github.com/mdasantana/java/tree/main/Atividades/Geometria)
+      * [Agenda - LinkedList](https://github.com/mdasantana/java/tree/main/Atividades/Agenda)
+      * [Sequência de Fibonacci e Fatorial](https://github.com/mdasantana/java/tree/main/Atividades/Recursividade)
    * Desafios
       * [Completar CPF](https://github.com/mdasantana/java/blob/main/Desafios/CPF.java)
 <!--te-->
