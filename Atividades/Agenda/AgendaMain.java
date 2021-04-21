@@ -1,4 +1,6 @@
 package Agenda;
+import Agenda.escritaTXT.Escrita;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -7,6 +9,9 @@ import java.util.Scanner;
 public class AgendaMain {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
+    String caminho = "C:\\Users\\Matheus Santana\\Desktop\\Conta\\src\\Agenda\\Agenda.txt";
+    int qndContatos = 2;
+    Escrita.abrirArquivo(caminho);
     System.out.println("Qual o nome da sua Agenda?");
     String nome = sc.nextLine();
     Agenda agenda = new Agenda(nome);
@@ -20,13 +25,16 @@ public class AgendaMain {
       Contato contato = new Contato(nome, telefone, email);
       agenda.setContatos(contato);
     }
-    
+    LinkedList<String> contatosTXT = new LinkedList<>();
     for(Contato cont: agenda.getContatos()){
-      System.out.println("\n/--------------------------------------/");
-      System.out.println("Nome do Contato: "+cont.getNome());
-      System.out.println("Telefone: "+cont.getTelefone());
-      System.out.println("E-mail do Contato: "+cont.getEmail());
-      System.out.println("/--------------------------------------/");
+      contatosTXT.add("Nome do Contato: "+cont.getNome()+"\n"
+      +"Telefone: "+cont.getTelefone()+"\n"
+      +"E-mail do Contato: "+cont.getEmail()+"\n"
+      +"/--------------------------------------/\n");
     }
+    for(String txt: contatosTXT){
+      Escrita.adicionarDados(txt);
+    }
+    Escrita.fecharArquivo();
   }
 }
