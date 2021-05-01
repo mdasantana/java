@@ -26,7 +26,7 @@
       * [Departamento Pessoal - LinkedList e Relacionamento de classes](https://github.com/mdasantana/java/tree/main/Atividades/DepartamentoPessoal)
       * [Adoção de Pets](https://github.com/mdasantana/java/tree/main/Atividades/Adocao)
       * [Agenda com BD MySQL](https://github.com/mdasantana/java/tree/main/Atividades/AgendaBD)
-        * Código em construção.
+        * Pendente de ajustes.
    * Desafios
       * [Completar CPF](https://github.com/mdasantana/java/blob/main/Desafios/CPF.java)
 <!--te-->
