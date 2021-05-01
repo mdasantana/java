@@ -28,11 +28,14 @@ public class AgendaDAO {
         String nome = resultadoConsulta.getString("nome");
         String telefone = resultadoConsulta.getString("telefone");
         String email = resultadoConsulta.getString("email");
+        String tipoContato = resultadoConsulta.getString("tipo_contato");
 
         contatos.add(new Contato(
+          id,
           nome,
           telefone,
-          email
+          email,
+          tipoContato
         ));
       }
     }catch (SQLException e){
@@ -56,12 +59,14 @@ public class AgendaDAO {
       
       if(resultadoConsulta.next()){
         contato = new Contato(
+                              resultadoConsulta.getInt("id"),
                               resultadoConsulta.getString("nome"),
                               resultadoConsulta.getString("telefone"),
-                              resultadoConsulta.getString("email"));
+                              resultadoConsulta.getString("email"),
+                              resultadoConsulta.getString("tipo_contato"));
       }
     }catch (SQLException e){
-      return contato;
+      
     }
     
     return contato;
@@ -80,9 +85,11 @@ public class AgendaDAO {
       
       if(resultadoConsulta.next()){
         contato = new Contato(
+                              resultadoConsulta.getInt("id"),
                               resultadoConsulta.getString("nome"),
                               resultadoConsulta.getString("telefone"),
-                              resultadoConsulta.getString("email"));
+                              resultadoConsulta.getString("email"),
+                              resultadoConsulta.getString("tipo_contato"));
       }
     }catch (SQLException e){
       return contato;
@@ -104,12 +111,14 @@ public class AgendaDAO {
       
       if(resultadoConsulta.next()){
         contato = new Contato(
+                              resultadoConsulta.getInt("id"),
                               resultadoConsulta.getString("nome"),
                               resultadoConsulta.getString("telefone"),
-                              resultadoConsulta.getString("email"));
+                              resultadoConsulta.getString("email"),
+                              resultadoConsulta.getString("tipo_contato"));
       }
     }catch (SQLException e){
-      return contato;
+      //return contato;
     }
     
     return contato;
@@ -119,7 +128,7 @@ public class AgendaDAO {
     
     try(Connection conexao = ConexaoBanco.getConexao()){
       
-      String querySQL = "INSERT INTO `contatos`(`nome`, `telefone`, `email`, `nome_agenda`) VALUES (?,?,?,?)";
+      String querySQL = "INSERT INTO `contatos`(`nome`, `telefone`, `email`, `tipo_contato`) VALUES (?,?,?,?)";
       
       PreparedStatement stmt = conexao.prepareStatement(querySQL);
       
@@ -127,7 +136,7 @@ public class AgendaDAO {
         stmt.setString(1 , cont.getNome());
         stmt.setString(2, cont.getTelefone());
         stmt.setString(3 , cont.getEmail());
-        stmt.setString(4 , agenda.getNome());
+        stmt.setString(4 , cont.getTipoContato());
         stmt.executeUpdate();
       }
       
@@ -203,7 +212,7 @@ public class AgendaDAO {
     
     try(Connection conexao = ConexaoBanco.getConexao()){
       
-      String querySQL = "UPDATE `contatos` SET nome_agenda = ? WHERE id = ?";
+      String querySQL = "UPDATE `contatos` SET tipo_contato = ? WHERE id = ?";
       
       PreparedStatement stmt = conexao.prepareStatement(querySQL);
       stmt.setString(1 , valor);
@@ -223,7 +232,7 @@ public class AgendaDAO {
     
     try(Connection conexao = ConexaoBanco.getConexao()){
       
-      String querySQL = "UPDATE `contatos` SET `nome`= ? ,`telefone`= ? ,`email`= ? ,`nome_agenda`= ? WHERE id = ?";
+      String querySQL = "UPDATE `contatos` SET `nome`= ? ,`telefone`= ? ,`email`= ? ,`tipo_contato`= ? WHERE id = ?";
       
       PreparedStatement stmt = conexao.prepareStatement(querySQL);
       stmt.setString(1 , nome);
@@ -238,6 +247,21 @@ public class AgendaDAO {
       
     }catch (SQLException e){
       e.printStackTrace();
+      return false;
+    }
+  }
+  
+  public static boolean deleteContato(int id){
+    try(Connection conexao = ConexaoBanco.getConexao()){
+      
+      String querySQL = "DELETE FROM `contatos` WHERE id = ?";
+      
+      PreparedStatement stmt = conexao.prepareStatement(querySQL);
+      stmt.setInt(1 , id);
+      stmt.executeUpdate();
+      return true;
+      
+    }catch (SQLException e){
       return false;
     }
   }
