@@ -199,6 +199,26 @@ public class AgendaDAO {
     }
   }
   
+  public static boolean UpdateClassificacao(String valor, int id){
+    
+    try(Connection conexao = ConexaoBanco.getConexao()){
+      
+      String querySQL = "UPDATE `contatos` SET nome_agenda = ? WHERE id = ?";
+      
+      PreparedStatement stmt = conexao.prepareStatement(querySQL);
+      stmt.setString(1 , valor);
+      stmt.setInt(2 , id);
+      
+      stmt.executeUpdate();
+      
+      return true;
+      
+    }catch (SQLException e){
+      e.printStackTrace();
+      return false;
+    }
+  }
+  
   public static boolean UpdateContato(String nome, String telefone, String email, String nomeAgenda, int id){
     
     try(Connection conexao = ConexaoBanco.getConexao()){

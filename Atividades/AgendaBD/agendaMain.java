@@ -17,41 +17,7 @@ public class agendaMain {
     System.out.println("::::::::: BEM-VINDO À SUA AGENDA :::::::::");
     
     menu(sc);
-    
-    /*
-    for(Contato contato : AgendaDAO.listaContatos()){
-      agenda.setContatos(contato);
-    }
-    
-    for(Contato cont : agenda.getContatos()){
-      System.out.println("Id: "+cont.getIdContato());
-      System.out.println("Nome: "+cont.getNome());
-      System.out.println("Telefone: "+cont.getTelefone());
-      System.out.println("E-mail: "+cont.getEmail());
-      System.out.println("/--------------------------/");
-    }
-    
-    
-    System.out.println("Nome: "+AgendaDAO.getPorId(2).getNome());
-    System.out.println("Telefone: "+AgendaDAO.getPorId(2).getTelefone());
-    System.out.println("E-mail: "+AgendaDAO.getPorId(2).getEmail());
-    
-    System.out.println("/-----------------------------/");
-
-    System.out.println("Nome: "+AgendaDAO.getPorTelefone("75981905975").getNome());
-    System.out.println("Telefone: "+AgendaDAO.getPorTelefone("75981905975").getTelefone());
-    System.out.println("E-mail: "+AgendaDAO.getPorTelefone("75981905975").getEmail());
-    
-    System.out.println("/-----------------------------/");
-
-    System.out.println("Nome: "+AgendaDAO.getPorNome("erson").getNome());
-    System.out.println("Telefone: "+AgendaDAO.getPorNome("erson").getTelefone());
-    System.out.println("E-mail: "+AgendaDAO.getPorNome("erson").getEmail());
-    
-    System.out.println("Status Insert: "+AgendaDAO.setInsertContato("Nomacy Silva", "7530245001", "normacy.silva@gmail.com.br", "Pessoal"));
-    */
-    //System.out.println("Status Update: "+AgendaDAO.setUpdateNome("Normacy Silva dos Anjos", 3));
-    
+        
   }
   
   public static void menu(Scanner sc){
@@ -73,7 +39,9 @@ public class agendaMain {
         consultarContato(sc);
         break;
       case 4:
-        System.out.println(":::::::: ATUALIZAÇÃO DE CONTATOS ::::::::");break;
+        System.out.println(":::::::: ATUALIZAÇÃO DE CONTATOS ::::::::");
+        atualizarContato(sc);
+        break;
       case 5:
         System.out.println(":::::::: DELEÇÃO DE CONTATOS ::::::::");break;
       case 6:
@@ -150,10 +118,66 @@ public class agendaMain {
   }
   
 public static void atualizarContato(Scanner sc){
-    System.out.println("Qual o nome do contato deseja atualizar?");
-    String nome = sc.next();
-    
-    
+  int id, tipoConsulta;
+  boolean status = true;
+  String novoValor="";
+  
+  System.out.print("Digite o ID do contato: ");
+  id = sc.nextInt();
+  System.out.println("O que deseja atualizar no contato?\n :: 1 - Nome\n :: 2 - Telefone\n :: 3 - E-mail\n :: 4 - Tipo do contato\n :: 5 - Todos os campos");
+  tipoConsulta = sc.nextInt();
+  switch(tipoConsulta){
+    case 1:
+      System.out.println("Qual o novo nome: ");
+      novoValor = sc.next();
+      status = AgendaDAO.UpdateNome(novoValor, id);
+    break;
+    case 2:
+      System.out.println("Qual o novo telefone: ");
+      novoValor = sc.next();
+      status = AgendaDAO.UpdateTelefone(novoValor, id );
+    break;
+    case 3:
+      System.out.println("Qual o novo e-mail: ");
+      novoValor = sc.next();
+      status = AgendaDAO.UpdateEmail(novoValor, id );
+    break;
+    case 4:
+      System.out.println("Qual o tipo de contato?\n :: 1 - Pessoal\n :: 2 - Trabalho\n :: 3 - Contatinho");
+      int tipoAgenda = sc.nextInt();
+      switch(tipoAgenda){
+        case 1: novoValor = "Pessoal";break;
+        case 2: novoValor = "Trabalho";break;
+        case 3: novoValor = "Contatinho";break;
+        default: System.out.println("Opção inválida!");break;
+      }
+      status = AgendaDAO.UpdateClassificacao(novoValor, id );
+    break;
+    case 5:
+      System.out.println("Qual o novo nome?: ");
+      String novoNome = sc.next();
+      System.out.println("Qual o novo telefone? ");
+      String novoTelefone = sc.next();
+      System.out.println("Qual o novo e-mail? ");
+      String novoEmail = sc.next();
+      System.out.println("Qual a nova classificação? ");
+      String novaClassif = sc.next();
+      status = AgendaDAO.UpdateContato(novoNome, novoTelefone, novoEmail, novaClassif, id );
+    break;
   }
   
+  if(status){
+    Agenda agenda = new Agenda();
+    agenda.setContatos(AgendaDAO.getPorId(id));
+    for(Contato cont: agenda.getContatos()){
+      System.out.println("Nome: "+cont.getNome());
+      System.out.println("Telefone: "+cont.getTelefone());
+      System.out.println("E-mail: "+cont.getEmail());
+    }
+  }else{
+    System.out.println("Desculpe!! Erro inesperado.\nTente novamente!");
+    atualizarContato(sc);
+    }
+  menu(sc);
+  }
 }
