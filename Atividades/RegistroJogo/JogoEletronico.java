@@ -11,9 +11,7 @@ public class JogoEletronico extends Jogo{
   }
   @Override
   public String getInfoJogo(){
-    String infoJogoCartas = "Nome: "+nome+" | Preço Unitário: "+precoUnitario
-                        +" | Classificação: "+clasEtaria+" | Tamanho(GB): "+tamanhoGB;
-    return infoJogoCartas;
+    return super.getInfoJogo()+" | Tamanho(GB): "+tamanhoGB;
   }
   
 }

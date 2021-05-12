@@ -12,8 +12,6 @@ public class JogoCartas extends Jogo{
   
   @Override
   public String getInfoJogo(){
-    String infoJogoCartas = "Nome: "+nome+" | Preço Unitário: "+precoUnitario
-                        +" | Classificação: "+clasEtaria+" | Quantidade Jogadores: "+qtdJogadores;
-    return infoJogoCartas;
+    return super.getInfoJogo()+" | Quantidade Jogadores: "+qtdJogadores;
   }
 }
