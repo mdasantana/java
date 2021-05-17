@@ -28,6 +28,8 @@
       * [Agenda - Escrita em Banco MySQL](https://github.com/mdasantana/java/tree/main/Atividades/AgendaBD)
         * Pendente de ajustes.
       * [Registro de Jogos - Herança](https://github.com/mdasantana/java/tree/main/Atividades/RegistroJogo)
+      * [Robô - Interfaces](https://github.com/mdasantana/java/tree/main/Atividades/Robo)
+      * [Instrumentos Musicais - Herança e Enum](https://github.com/mdasantana/java/tree/main/Atividades/InstrumentosMusicais)
    * Desafios
       * [Completar CPF](https://github.com/mdasantana/java/blob/main/Desafios/CPF.java)
 <!--te-->
